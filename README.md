@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/76d33aa9-fcdc-4c95-8d81-72f8120b0742)# Diciembre-repaso
+Diciembre-repaso
 Actividad 1 y 2 
 
 Actividad 1
