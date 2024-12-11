@@ -31,19 +31,20 @@ function mostrarProductos() {
 }
 
 function calcularFacturacion() {
-    let detalle = "";
-    let totalProductos = productos.length;
-    let totalAPagar = 0;
-
-    for (let i = 0; i < productos.length; i++) {
-        let producto = productos[i];
+    let procesados = productos.map(producto => {
         let descuento = calcularDescuento(producto.monto, producto.pago);
         let montoFinal = producto.monto - (producto.monto * descuento);
+        return { ...producto, descuento, montoFinal };
+    });
 
-        detalle += `<p>${producto.nombre}: $${producto.monto} - Desc: ${descuento * 100}% - Final: $${montoFinal}</p>`;
-
-        totalAPagar += montoFinal;
+    let detalle = "";
+    for (let i = 0; i < procesados.length; i++) {
+        let p = procesados[i];
+        detalle += `<p>${p.nombre}: $${p.monto} - Desc: ${p.descuento * 100}% - Final: $${p.montoFinal}</p>`;
     }
+
+    let totalAPagar = procesados.reduce((total, p) => total + p.montoFinal, 0);
+    let totalProductos = procesados.length;
 
     let resumen = document.getElementById("resumen");
     resumen.innerHTML = `
@@ -55,21 +56,17 @@ function calcularFacturacion() {
 }
 
 function calcularDescuento(monto, pago) {
-    let descuento = 0;
-
     if (monto < 200) {
-        descuento = 0;
+        return 0;
     } else if (monto > 400) {
-        descuento = 0.4;
+        return 0.4;
     } else {
         if (pago === "E") {
-            descuento = 0.3;
+            return 0.3;
         } else if (pago === "D") {
-            descuento = 0.2;
+            return 0.2;
         } else {
-            descuento = 0.1;
+            return 0.1;
         }
     }
-
-    return descuento;
 }
