@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facturación Múltiple</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Facturación Múltiple</h1>
+  
+  <label for="nombre">Nombre del Producto:</label>
+  <input type="text" id="nombre" placeholder="Nombre">
+  
+  <label for="monto">Monto del Producto:</label>
+  <input type="number" id="monto" placeholder="Monto">
+  
+  <label for="pago">Medio de Pago:</label>
+  <select id="pago">
+    <option value="C">Tarjeta de Crédito</option>
+    <option value="E">Efectivo</option>
+    <option value="D">Tarjeta de Débito</option>
+  </select>
+  
+  <button onclick="agregarProducto()">Agregar Producto</button>
+  <button onclick="calcularFacturacion()">Calcular Facturación</button>
+  
+  <h2>Productos:</h2>
+  <ul id="listaProductos"></ul>
+  
+  <h2 id="resumen">Resumen: </h2>
+  <script src="main.js"></script>
+</body>
+</html>
