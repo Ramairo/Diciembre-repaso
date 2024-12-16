@@ -8,7 +8,7 @@ function calcularMonto() {
     }
   
     const resultado = facturacion(monto, medioPago);
-    document.getElementById('resultado').textContent = `Resultado: $${resultado.toFixed(2)}`;
+    document.getElementById('resultado').textContent = `Resultado: ${resultado}`;
   }
   
   function facturacion(monto, medioPago) {
