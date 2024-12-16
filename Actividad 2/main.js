@@ -1,9 +1,9 @@
 let productos = []; // Lista para almacenar los productos
 
-function agregarProducto() {
-    let nombre = document.getElementById("nombre").value;
-    let monto = parseFloat(document.getElementById("monto").value);
-    let medioPago = document.getElementById("pago").value;
+function agregarProducto(nombreInput, montoInput, medioPagoInput, listaElement) {
+    let nombre = nombreInput.value;
+    let monto = parseFloat(montoInput.value);
+    let medioPago = medioPagoInput.value;
 
     if (!nombre || isNaN(monto) || monto <= 0) {
         alert("Por favor, ingrese datos válidos.");
@@ -17,21 +17,20 @@ function agregarProducto() {
     };
 
     productos.push(producto);
-    mostrarProductos();
+    mostrarProductos(productos, listaElement);
 }
 
-function mostrarProductos() {
-    let lista = document.getElementById("listaProductos");
-    lista.innerHTML = "";
+function mostrarProductos(productosLista, listaElement) {
+    listaElement.innerHTML = "";
 
-    for (let i = 0; i < productos.length; i++) {
-        let item = productos[i];
-        lista.innerHTML += `<li>${item.nombre} - $${item.monto} (${item.pago})</li>`;
+    for (let i = 0; i < productosLista.length; i++) {
+        let item = productosLista[i];
+        listaElement.innerHTML += `<li>${item.nombre} - $${item.monto} (${item.pago})</li>`;
     }
 }
 
-function calcularFacturacion() {
-    let procesados = productos.map(producto => {
+function calcularFacturacion(productosLista, resumenElement) {
+    let procesados = productosLista.map(producto => {
         let descuento = calcularDescuento(producto.monto, producto.pago);
         let montoFinal = producto.monto - (producto.monto * descuento);
         return { ...producto, descuento, montoFinal };
@@ -46,8 +45,7 @@ function calcularFacturacion() {
     let totalAPagar = procesados.reduce((total, p) => total + p.montoFinal, 0);
     let totalProductos = procesados.length;
 
-    let resumen = document.getElementById("resumen");
-    resumen.innerHTML = `
+    resumenElement.innerHTML = `
         <h3>Detalle:</h3>
         ${detalle}
         <p><b>Total de productos:</b> ${totalProductos}</p>
@@ -65,7 +63,9 @@ function calcularDescuento(monto, pago) {
             return 0.3;
         } else if (pago === "D") {
             return 0.2;
-        } else {
+        }else if (pago === "MP"){
+          return 0.15;
+        }else {
             return 0.1;
         }
     }
