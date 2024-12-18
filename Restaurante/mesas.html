@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesas - Restaurante</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="encabezado">
+        <h1 id="usuarioNombre">Nombre del Usuario</h1>
+        <h2 id="usuarioCargo">Cargo del Usuario</h2>
+    </header>
+    <main class="zonaMesas">
+        <div class="mesa" data-numero="1">1</div>
+        <div class="mesa" data-numero="2">2</div>
+        <div class="mesa" data-numero="3">3</div>
+        <div class="mesa" data-numero="4">4</div>
+        <div class="mesa" data-numero="5">5</div>
+    </main>
+    <footer class="pieDePagina">
+        <button>Lista de Mozos</button>
+        <button>Agregar Mozo</button>
+        <button>Venta de Mozo</button>
+        <button>Listado de Platos y Precios</button>
+    </footer>
+    <div id="mesaEmergente" class="mesaEmergente oculto">
+        <button class="cerrarEmergente">X</button>
+        <h3 id="tituloMesa">Mesa número</h3>
+        <form id="formularioProductos">
+            <input type="text" id="codigoProducto" placeholder="Código del producto">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos"></tbody>
+            </table>
+            <div class="botones">
+                <button type="button" id="agregarProducto">Agregar producto</button>
+                <button type="button" id="eliminarProducto">Eliminar producto</button>
+                <button type="button" id="cerrarMesa">Cerrar mesa</button>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
