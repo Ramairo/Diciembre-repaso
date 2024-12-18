@@ -41,10 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (usuarioNombre && usuarioCargo) {
                 document.getElementById("usuarioNombre").textContent = usuarioNombre;
                 document.getElementById("usuarioCargo").textContent = usuarioCargo;
-            } else {
-                document.getElementById("usuarioNombre").textContent = "Usuario no encontrado";
-                document.getElementById("usuarioCargo").textContent = "Cargo no disponible";
-            }
+            } 
         });
     }
 });
