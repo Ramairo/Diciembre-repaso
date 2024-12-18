@@ -2,7 +2,7 @@ import { usuarios } from './usuarios.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (document.getElementById("Form")) {
+    if (window.location.pathname.includes("index.html")) {
         
         const form = document.getElementById("Form");
         const errorMensaje = document.getElementById("errorMensaje");
